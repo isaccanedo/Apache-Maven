@@ -1,6 +1,173 @@
 # Apache-Maven
 :computer: # O objetivo principal do Maven é permitir que um desenvolvedor compreenda o estado completo de um esforço de desenvolvimento no menor período de tempo.
 
+### Introdução
 Maven, uma palavra em iídiche que significa acumulador de conhecimento, começou como uma tentativa de simplificar os processos de construção no projeto da Turbina de Jacarta. Havia vários projetos, cada um com seus próprios arquivos de construção Ant, que eram ligeiramente diferentes. Os JARs foram verificados no CVS. Queríamos uma maneira padrão de construir os projetos, uma definição clara do que o projeto consistia, uma maneira fácil de publicar as informações do projeto e uma maneira de compartilhar JARs entre vários projetos.
 
 O resultado é uma ferramenta que agora pode ser usada para construir e gerenciar qualquer projeto baseado em Java. Esperamos ter criado algo que torne o trabalho diário dos desenvolvedores Java mais fácil e geralmente ajude na compreensão de qualquer projeto baseado em Java.
+
+# Objetivos de Maven
+O objetivo principal do Maven é permitir que um desenvolvedor compreenda o estado completo de um esforço de desenvolvimento no menor período de tempo. Para atingir esse objetivo, a Maven lida com várias áreas de preocupação:
+
+- Facilitando o processo de build;
+- Fornecimento de um sistema de construção uniforme;
+- Fornecimento de informações de projeto de qualidade;
+- Estimular melhores práticas de desenvolvimento.
+
+# Facilitando o processo de construção
+Embora o uso do Maven não elimine a necessidade de saber sobre os mecanismos subjacentes, o Maven protege os desenvolvedores de muitos detalhes.
+
+# Fornecendo um sistema de construção uniforme
+O Maven constrói um projeto usando seu modelo de objeto de projeto (POM) e um conjunto de plug-ins. Depois de se familiarizar com um projeto Maven, você saberá como todos os projetos Maven são construídos. Isso economiza tempo ao navegar em muitos projetos.
+
+# Fornecimento de informações de projeto de qualidade
+O Maven fornece informações úteis do projeto que são em parte retiradas de seu POM e em parte geradas a partir das fontes de seu projeto. Por exemplo, o Maven pode fornecer:
+
+- Registro de alterações criado diretamente do controle de origem
+- Fontes com referência cruzada
+- Listas de mala direta gerenciadas pelo projeto
+- Dependências usadas pelo projeto
+- Relatórios de teste de unidade, incluindo cobertura
+
+Produtos de análise de código de terceiros também fornecem plug-ins Maven que adicionam seus relatórios às informações padrão fornecidas pelo Maven.
+
+# Fornecendo diretrizes para o desenvolvimento de melhores práticas
+O Maven tem como objetivo reunir os princípios atuais para o desenvolvimento de melhores práticas e facilitar a orientação de um projeto nessa direção.
+
+Por exemplo, especificação, execução e relatório de testes de unidade fazem parte do ciclo normal de construção usando Maven. As práticas recomendadas de teste de unidade atuais foram usadas como diretrizes:
+
+- Manter o código-fonte do teste em uma árvore separada, mas paralela;
+- Usando convenções de nomenclatura de casos de teste para localizar e executar testes;
+- Ter casos de teste configurando seu ambiente em vez de customizar a construção para preparação de teste.
+
+O Maven também auxilia no fluxo de trabalho do projeto, como liberação e gerenciamento de problemas.
+
+O Maven também sugere algumas diretrizes sobre como fazer o layout da estrutura de diretórios do seu projeto. Depois de aprender o layout, você pode navegar facilmente em outros projetos que usam o Maven.
+
+Embora adote uma abordagem opinativa para o layout do projeto, alguns projetos podem não se encaixar nesta estrutura por razões históricas. Embora o Maven seja projetado para ser flexível às necessidades de diferentes projetos, ele não pode atender a todas as situações sem comprometer seus objetivos.
+
+Se o seu projeto tem uma estrutura de construção incomum que não pode ser reorganizada, você pode ter que abrir mão de alguns recursos ou do uso do Maven por completo.
+
+# O que é Maven Not?
+Você deve ter ouvido algumas das seguintes coisas sobre o Maven:
+
+- Maven é uma ferramenta de site e documentação;
+- Maven estende Ant para permitir que você baixe dependências;
+- Maven é um conjunto de scriptlets Ant reutilizáveis.
+
+Enquanto o Maven faz essas coisas, como você pode ler acima na seção "O que é o Maven?" seção, esses não são os únicos recursos do Maven, e seus objetivos são bastante diferentes.
+
+# Pré-requisitos
+Você deve ter conhecimento de como instalar software em seu computador. Se você não sabe como fazer isso, pergunte a alguém em seu escritório, escola, etc. ou pague alguém para explicar isso a você. As listas de discussão do Maven não são o melhor lugar para pedir este conselho.
+
+# Instalação
+Maven é uma ferramenta Java, portanto, você deve ter o Java instalado para continuar.
+
+Primeiro, baixe o Maven e siga as instruções de instalação. Depois disso, digite o seguinte em um terminal ou prompt de comando:
+```
+mvn --version
+```
+
+Ele deve imprimir sua versão instalada do Maven, por exemplo:
+```
+Apache Maven 3.6.3 (cecedd343002696d0abb50b32b541b8a6ba2883f)
+Maven home: D:\apache-maven-3.6.3\apache-maven\bin\..
+Java version: 1.8.0_232, vendor: AdoptOpenJDK, runtime: C:\Program Files\AdoptOpenJDK\jdk-8.0.232.09-hotspot\jre
+Default locale: en_US, platform encoding: Cp1250
+OS name: "windows 10", version: "10.0", arch: "amd64", family: "windows"
+```
+
+Dependendo da configuração da sua rede, você pode precisar de configuração extra. Verifique o Guia para configurar o Maven, se necessário.
+
+Se você estiver usando o Windows, deve consultar os Pré-requisitos do Windows para garantir que está preparado para usar o Maven no Windows.
+
+# Criando um Projeto
+Você precisará de um local para o seu projeto residir, crie um diretório em algum lugar e inicie um shell nesse diretório. Na linha de comando, execute o seguinte objetivo do Maven:
+```
+mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app 
+-DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.4 
+-DinteractiveMode=false
+```
+Se você acabou de instalar o Maven, pode demorar um pouco na primeira execução. Isso ocorre porque o Maven está baixando os artefatos mais recentes (jars de plugin e outros arquivos) em seu repositório local. Você também pode precisar executar o comando algumas vezes antes que ele seja bem-sucedido. Isso ocorre porque o servidor remoto pode atingir o tempo limite antes que os downloads sejam concluídos. Não se preocupe, existem maneiras de consertar isso.
+
+Você notará que a meta de geração criou um diretório com o mesmo nome fornecido como artifactId. Mude para esse diretório.
+```
+cd my-app
+```
+
+Sob este diretório, você notará a seguinte estrutura de projeto padrão.
+
+```
+my-app
+|-- pom.xml
+`-- src
+    |-- main
+    |   `-- java
+    |       `-- com
+    |           `-- mycompany
+    |               `-- app
+    |                   `-- App.java
+    `-- test
+        `-- java
+            `-- com
+                `-- mycompany
+                    `-- app
+                        `-- AppTest.java
+```
+
+O diretório src/main / java contém o código-fonte do projeto, o diretório src/test / java contém a fonte de teste e o arquivo pom.xml é o modelo de objeto do projeto, ou POM.
+
+# O POM
+O arquivo pom.xml é o núcleo da configuração de um projeto no Maven. É um único arquivo de configuração que contém a maioria das informações necessárias para construir um projeto da maneira que você deseja. O POM é enorme e pode ser assustador em sua complexidade, mas não é necessário entender todas as complexidades ainda para usá-lo de forma eficaz. O POM deste projeto é:
+```
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+ 
+  <groupId>com.mycompany.app</groupId>
+  <artifactId>my-app</artifactId>
+  <version>1.0-SNAPSHOT</version>
+ 
+  <properties>
+    <maven.compiler.source>1.7</maven.compiler.source>
+    <maven.compiler.target>1.7</maven.compiler.target>
+  </properties>
+ 
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>
+```
+
+# O que eu acabei de fazer?
+Você executou o arquétipo de meta do Maven: gerar e passou vários parâmetros para essa meta. O arquétipo do prefixo é o plug-in que fornece o objetivo. Se você estiver familiarizado com o Ant, pode considerá-lo semelhante a uma tarefa. Este arquétipo: gerar meta criou um projeto simples baseado em um arquétipo maven-arquétipo-início rápido. Por ora, basta dizer que um plugin é uma coleção de objetivos com um propósito geral comum. Por exemplo, o jboss-maven-plugin, cujo propósito é "lidar com vários itens jboss".
+
+# Construir o Projeto
+```
+mvn package
+```
+A linha de comando imprimirá várias ações e terminará com o seguinte:
+```
+ ...
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.953 s
+[INFO] Finished at: 2019-11-24T13:05:10+01:00
+[INFO] ------------------------------------------------------------------------
+```
+Ao contrário do primeiro comando executado (arquétipo: gerar), você pode notar que o segundo é simplesmente uma única palavra - pacote. Em vez de um objetivo, esta é uma fase. Uma fase é uma etapa do ciclo de vida de construção, que é uma sequência ordenada de fases. Quando uma fase é fornecida, o Maven executará todas as fases na sequência até e incluindo aquela definida. Por exemplo, se executarmos a fase de compilação, as fases que realmente são executadas são:
+
+1 - validar
+2 - gerar-fontes
+3 - fontes de processo
+4 - gerar recursos
+5 - recursos de processo
+6 - compilar
+
+Você pode testar o JAR recém-compilado e empacotado com o seguinte comando:
