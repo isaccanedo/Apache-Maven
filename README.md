@@ -171,3 +171,71 @@ Ao contrário do primeiro comando executado (arquétipo: gerar), você pode nota
 6 - compilar
 
 Você pode testar o JAR recém-compilado e empacotado com o seguinte comando:
+```
+java -cp target/my-app-1.0-SNAPSHOT.jar com.mycompany.app.App
+```
+
+Que irá imprimir o essencial:
+
+```
+Hello World!
+```
+
+# Java 9 ou posterior
+Por padrão, sua versão do Maven pode usar uma versão antiga do maven-compiler-plugin que não é compatível com o Java 9 ou versões posteriores. Para direcionar o Java 9 ou posterior, você deve pelo menos usar a versão 3.6.0 do maven-compiler-plugin e definir a propriedade maven.compiler.release para a versão do Java que você está direcionando (por exemplo, 9, 10, 11, 12, etc. .).
+
+No exemplo a seguir, configuramos nosso projeto Maven para usar a versão 3.8.1 do maven-compiler-plugin e Java 11 de destino:
+```
+<properties>
+        <maven.compiler.release>11</maven.compiler.release>
+    </properties>
+ 
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.8.1</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+```
+
+Para saber mais sobre a opção --release do javac, consulte JEP 247.
+
+# Executando ferramentas Maven
+### Fases Maven
+Embora dificilmente seja uma lista abrangente, essas são as fases do ciclo de vida padrão mais comuns executadas.
+
+- validar: validar se o projeto está correto e se todas as informações necessárias estão disponíveis;
+- compilar: compila o código-fonte do projeto;
+- test: testa o código-fonte compilado usando uma estrutura de teste de unidade adequada. Esses testes não devem exigir que o código seja empacotado ou implantado;
+- pacote: pega o código compilado e empacota-o em seu formato distribuível, como um JAR;
+- teste de integração: processe e implante o pacote, se necessário, em um ambiente onde os testes de integração possam ser executados;
+- verificar: execute todas as verificações para verificar se a embalagem é válida e atende aos critérios de qualidade;
+- instalar: instala o pacote no repositório local, para uso como uma dependência em outros projetos localmente;
+- implantar: feito em um ambiente de integração ou liberação, copia o pacote final para o repositório remoto para compartilhamento com outros desenvolvedores e projetos.
+
+Existem dois outros ciclos de vida Maven importantes além da lista padrão acima. Eles estão
+
+- limpar: limpa artefatos criados por compilações anteriores;
+- site: gera a documentação do site para este projeto.
+
+As fases são, na verdade, mapeadas para objetivos subjacentes. Os objetivos específicos executados por fase dependem do tipo de embalagem do projeto. Por exemplo, package executa jar: jar se o tipo de projeto for um JAR, e war: war se o tipo de projeto for - você adivinhou - um WAR.
+
+Uma coisa interessante a se notar é que as fases e metas podem ser executadas em sequência.
+```
+mvn clean dependency:copy-dependencies package
+```
+Este comando irá limpar o projeto, copiar dependências e empacotar o projeto (executando todas as fases até o pacote, é claro).
+
+# Gerando o Site
+```
+mvn site
+```
+Esta fase gera um site com base nas informações do pom do projeto. Você pode consultar a documentação gerada em destino/site.
+
+# Conclusão
+Esperamos que esta rápida visão geral tenha despertado seu interesse na versatilidade do Maven. Observe que este é um guia de início rápido muito truncado. Agora você está pronto para obter detalhes mais abrangentes sobre as ações que acabou de realizar.
