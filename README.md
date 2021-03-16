@@ -48,18 +48,6 @@ Embora adote uma abordagem opinativa para o layout do projeto, alguns projetos p
 
 Se o seu projeto tem uma estrutura de construção incomum que não pode ser reorganizada, você pode ter que abrir mão de alguns recursos ou do uso do Maven por completo.
 
-# O que é Maven?
-Você deve ter ouvido algumas das seguintes coisas sobre o Maven:
-
-- Maven é uma ferramenta de site e documentação;
-- Maven estende Ant para permitir que você baixe dependências;
-- Maven é um conjunto de scriptlets Ant reutilizáveis.
-
-Enquanto o Maven faz essas coisas, como você pode ler acima na seção "O que é o Maven?" seção, esses não são os únicos recursos do Maven, e seus objetivos são bastante diferentes.
-
-# Pré-requisitos
-Você deve ter conhecimento de como instalar software em seu computador. Se você não sabe como fazer isso, pergunte a alguém em seu escritório, escola, etc. ou pague alguém para explicar isso a você. As listas de discussão do Maven não são o melhor lugar para pedir este conselho.
-
 # Instalação
 Maven é uma ferramenta Java, portanto, você deve ter o Java instalado para continuar.
 
