@@ -48,7 +48,7 @@ Embora adote uma abordagem opinativa para o layout do projeto, alguns projetos p
 
 Se o seu projeto tem uma estrutura de construção incomum que não pode ser reorganizada, você pode ter que abrir mão de alguns recursos ou do uso do Maven por completo.
 
-# O que é Maven Not?
+# O que é Maven?
 Você deve ter ouvido algumas das seguintes coisas sobre o Maven:
 
 - Maven é uma ferramenta de site e documentação;
