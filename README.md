@@ -103,7 +103,7 @@ my-app
                         `-- AppTest.java
 ```
 
-O diretório src/main / java contém o código-fonte do projeto, o diretório src/test / java contém a fonte de teste e o arquivo pom.xml é o modelo de objeto do projeto, ou POM.
+O diretório src/main/java contém o código-fonte do projeto, o diretório src/test/java contém a fonte de teste e o arquivo pom.xml é o modelo de objeto do projeto, ou POM.
 
 # O POM
 O arquivo pom.xml é o núcleo da configuração de um projeto no Maven. É um único arquivo de configuração que contém a maioria das informações necessárias para construir um projeto da maneira que você deseja. O POM é enorme e pode ser assustador em sua complexidade, mas não é necessário entender todas as complexidades ainda para usá-lo de forma eficaz. O POM deste projeto é:
