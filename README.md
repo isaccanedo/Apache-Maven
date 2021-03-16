@@ -151,12 +151,12 @@ A linha de comando imprimirá várias ações e terminará com o seguinte:
 ```
 Ao contrário do primeiro comando executado (arquétipo: gerar), você pode notar que o segundo é simplesmente uma única palavra - pacote. Em vez de um objetivo, esta é uma fase. Uma fase é uma etapa do ciclo de vida de construção, que é uma sequência ordenada de fases. Quando uma fase é fornecida, o Maven executará todas as fases na sequência até e incluindo aquela definida. Por exemplo, se executarmos a fase de compilação, as fases que realmente são executadas são:
 
-1 - validar
-2 - gerar-fontes
-3 - fontes de processo
-4 - gerar recursos
-5 - recursos de processo
-6 - compilar
+- validar
+- gerar-fontes
+- fontes de processo
+- gerar recursos
+- recursos de processo
+- compilar
 
 Você pode testar o JAR recém-compilado e empacotado com o seguinte comando:
 ```
