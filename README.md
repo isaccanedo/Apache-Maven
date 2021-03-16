@@ -6,7 +6,7 @@ Maven, uma palavra em iídiche que significa acumulador de conhecimento, começo
 
 O resultado é uma ferramenta que agora pode ser usada para construir e gerenciar qualquer projeto baseado em Java. Esperamos ter criado algo que torne o trabalho diário dos desenvolvedores Java mais fácil e geralmente ajude na compreensão de qualquer projeto baseado em Java.
 
-# Objetivos de Maven
+# Objetivos do Maven
 O objetivo principal do Maven é permitir que um desenvolvedor compreenda o estado completo de um esforço de desenvolvimento no menor período de tempo. Para atingir esse objetivo, a Maven lida com várias áreas de preocupação:
 
 - Facilitando o processo de build;
